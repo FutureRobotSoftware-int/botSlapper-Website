@@ -1,0 +1,13 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 45,
+            "type": "generator",
+            "bundle": "63x1",
+            "name": "Spooky Butt Crate Generator",
+            "exchange": "44",
+            "granted_manually": false
+        }
+    ]
+}

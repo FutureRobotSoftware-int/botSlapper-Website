@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 18,
+            "type": "generator",
+            "bundle": "43x100;72x100;76x100;123x100;137x100",
+            "name": "Gyatt Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

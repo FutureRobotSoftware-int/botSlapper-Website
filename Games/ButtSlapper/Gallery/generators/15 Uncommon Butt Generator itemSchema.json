@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 15,
+            "type": "generator",
+            "bundle": "9x100;10x100;39x100;40x100;41x100;74x100;91x100;92x100;119x100;120x100;121x100",
+            "name": "Uncommon Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

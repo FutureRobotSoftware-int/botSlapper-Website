@@ -1,0 +1,13 @@
+{
+	"appid": "3231090",
+	"items": [
+		{
+			"itemdefid": 70,
+			"type": "generator",
+			"bundle": "71x1",
+			"name": "Holidays Butt Crate Generator",
+			"exchange": "69",
+			"gramted_manually": false
+		}
+	]
+}

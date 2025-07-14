@@ -1,0 +1,20 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": "160",
+            "type": "item",
+            "name": "Ada Butt Pillow Butt",
+            "description": "",
+            "icon_url": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/AdaButtPillowButt.jpg",
+            "item_icon_url_large": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/AdaButtPillowButt_Large.jpg",
+            "marketable": true,
+            "tradable": true,
+            "tags": "inventory_type:butt;rarity:uncommon",
+            "hidden": false,
+            "store_hidden": false,
+            "granted_manually": false,
+            "auto_stack": true
+        }
+    ]
+}

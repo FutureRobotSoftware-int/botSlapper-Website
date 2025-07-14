@@ -1,0 +1,20 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": "46",
+            "type": "item",
+            "name": "Xeno Butt",
+            "description": "",
+            "icon_url": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/XenoButt.jpg",
+            "item_icon_url_large": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/XenoButt_Large.jpg",
+            "marketable": true,
+            "tradable": true,
+            "tags": "inventory_type:butt;rarity:gyatt",
+            "hidden": true,
+            "store_hidden": false,
+            "granted_manually": false,
+            "auto_stack": true
+        }
+    ]
+}

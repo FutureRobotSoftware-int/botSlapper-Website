@@ -1,0 +1,20 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": "120",
+            "type": "item",
+            "name": "Yoga Pants Tan Butt",
+            "description": "",
+            "icon_url": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/YogaPantsTanButt.jpg",
+            "item_icon_url_large": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/YogaPantsTanButt_Large.jpg",
+            "marketable": true,
+            "tradable": true,
+            "tags": "inventory_type:butt;rarity:uncommon",
+            "hidden": false,
+            "store_hidden": false,
+            "granted_manually": false,
+            "auto_stack": true
+        }
+    ]
+}

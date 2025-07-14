@@ -1,0 +1,13 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 5,
+            "type": "generator",
+            "bundle": "14x100;15x60;16x30;17x8;18x1",
+            "name": "Butt Crate Generator",
+            "exchange": "3",
+            "granted_manually": false
+        }
+    ]
+}

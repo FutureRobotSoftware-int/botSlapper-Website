@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 16,
+            "type": "generator",
+            "bundle": "1x100;2x100;8x100;19x100;20x100;21x100;22x100;35x100;73x100;93x100;94x100;95x100;116x100;118x100;122x100;132x100;133x100;134x100;135x100",
+            "name": "Rare Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

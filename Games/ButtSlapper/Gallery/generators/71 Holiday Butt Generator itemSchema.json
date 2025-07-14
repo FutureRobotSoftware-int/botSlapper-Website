@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 71,
+            "type": "generator",
+            "bundle": "77x8;78x8;79x8;80x1;81x30;82x60;83x60;84x8;85x8;86x30;87x30;88x100;89x100;90x100;96x8;97x1;98x8;99x1;100x8;101x1",
+            "name": "Holidays Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

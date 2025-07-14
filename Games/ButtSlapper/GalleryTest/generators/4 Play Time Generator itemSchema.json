@@ -1,0 +1,17 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 4,
+            "type": "playtimegenerator",
+            "bundle": "3x1",
+            "name": "Play Time Generator",
+            "use_drop_limit": false,
+            "drop_limit": false,
+            "drop_interval": false,
+            "use_drop_window": false,
+            "drop_max_per_window": false,
+            "granted_manually": false
+        }
+    ]
+}

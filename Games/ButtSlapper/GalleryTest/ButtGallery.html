@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amarillo's Butt Slapper Drop Rates</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+        h1 {
+            font-family: 'Quicksand', sans-serif;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.1em;
+        }
+        .tab:hover {
+            background-color: #3a3a3a;
+        }
+        .tab.active {
+            background-color: #4a4a4a;
+            font-weight: bold;
+        }
+        .crate-section {
+            display: none;
+        }
+        .crate-section.active {
+            display: block;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+        .item {
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        .item-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .item-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .item-image:hover img {
+            animation: jellobounce 0.6s ease-in-out;
+        }
+        @keyframes jellobounce {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.15, 0.85); }
+            35% { transform: scale(0.95, 1.05); }
+            45% { transform: scale(1.05, 0.95); }
+            55% { transform: scale(0.98, 1.02); }
+            65% { transform: scale(1.02, 0.98); }
+            75% { transform: scale(0.99, 1.01); }
+        }
+        .item h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #ffffff;
+        }
+        .item p {
+            margin: 8px 0;
+            font-size: 0.9em;
+            color: #b0b0b0;
+        }
+        .item.common { border: 1px solid #4a4a4a; }
+        .item.uncommon { border: 1px solid #267f00; box-shadow: 0 0 10px rgba(38, 127, 0, 0.1); }
+        .item.rare { border: 1px solid #0052a3; box-shadow: 0 0 10px rgba(0, 82, 163, 0.2); }
+        .item.exquisite { border: 1px solid #8600b3; box-shadow: 0 0 15px rgba(134, 0, 179, 0.3); }
+        .item.gyatt { border: 1px solid #ffbf00; box-shadow: 0 0 20px rgba(255, 191, 0, 0.4); }
+        .info-message, .custom-message {
+            text-align: center;
+            margin: 20px auto;
+            padding: 15px;
+            border-radius: 10px;
+            max-width: 800px;
+        }
+        .info-message {
+            background-color: #2a2a2a;
+            font-style: italic;
+            font-size: 0.9em;
+            color: #b0b0b0;
+            opacity: 0.8;
+        }
+        .custom-message {
+            background-color: #3a3a3a;
+            color: #e0e0e0;
+            border: 1px solid #5a5a5a;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            font-size: 1.1em;
+            line-height: 1.5;
+            padding: 20px;
+        }
+        .custom-message h3 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.3em;
+            margin: 0 0 15px 0;
+            color: #ffa500;
+        }
+        .custom-message p {
+            margin: 0 0 20px 0;
+        }
+        .custom-message p:last-child {
+            margin-bottom: 0;
+        }
+        .custom-message::before,
+        .custom-message::after {
+            content: "🗣️🗣️🗣️";
+            display: block;
+            font-size: 1.3em;
+        }
+        .custom-message::before {
+            margin-bottom: 10px;
+        }
+        .custom-message::after {
+            margin-top: 10px;
+        }
+
+        .item.spooky-exclusive {
+            background: linear-gradient(45deg, #2a2a2a, #3a1a1a);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .exclusive-tag {
+            background-color: #332F2C;
+            color: #FFF;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transform: rotate(15deg);
+        }
+
+        .more-exclusive-tag,.new-tag {
+            background-color: #8B0000;
+            color: #FFF;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transform: rotate(15deg);
+        }
+
+        .new-tag {
+            background-color: #ff4500; /* 🔥 Bright red-orange */
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            transform: rotate(-10deg);
+            box-shadow: 0 0 10px rgba(255, 69, 0, 0.6);
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Amarillo's Butt Slapper Drop Rates</h1>
+    <div class="custom-message"></div>
+    <div class="info-message">
+        Click on any image to open up the Steam Market. You might have to refresh that page a couple times, because Valve is a small indie company.
+    </div>
+    <div class="tabs" id="crate-tabs"></div>
+    <div id="crate-sections"></div>
+
+    <script>
+        const galleryElement = document.getElementById('gallery');
+        const crateTypes = [
+            { id: 5, name: "Butt Crate" },
+            { id: 124, name: "Man Butt Crate" },
+            { id: 70, name: "Unavailable - Holidays Butt Crate"},
+            { id: 45, name: "Unavailable - Spooky Butt Crate" },
+        ];
+
+        const newButtIDs = [132, 133, 134, 135, 136, 137]; // ✅ Add all new butt IDs here
+
+
+        async function loadJSON(url) {
+            try {
+                const response = await axios.get(url);
+                return response.data;
+            } catch (error) {
+                console.error('Error loading JSON:', error);
+                return null;
+            }
+        }
+    
+        async function listJsonFiles(directory) {
+            const timestamp = new Date().getTime(); // Add a timestamp to prevent caching
+            const response = await axios.get(`list_json_files.php?directory=${directory}&t=${timestamp}`);
+            console.log(`Raw response from list_json_files.php for ${directory}:`, response.data);
+            return response.data;
+        }
+    
+        async function loadAllGenerators() {
+            const directories = ['generators', 'butt'];
+            let allGenerators = {};
+
+            for (const dir of directories) {
+                console.log(`Scanning directory: ${dir}`);
+                const files = await listJsonFiles(dir);
+                console.log(`Files in ${dir}:`, files);
+
+                for (const file of files) {
+                    console.log(`Loading file: ${dir}/${file}`);
+                    const data = await loadJSON(`${dir}/${file}`);
+                    console.log(`Data loaded from ${file}:`, data);
+                    
+                    if (data && data.items) {
+                        data.items.forEach(item => {
+                            console.log(`Processing item:`, item);
+                            if (allGenerators[item.itemdefid]) {
+                                console.warn(`Duplicate item found for ID ${item.itemdefid}. Overwriting:`, allGenerators[item.itemdefid]);
+                            }
+                            allGenerators[item.itemdefid] = item;
+                            console.log(`Stored item with ID ${item.itemdefid} in allGenerators`);
+                        });
+                    } else {
+                        console.warn(`File ${dir}/${file} does not contain expected data structure`);
+                    }
+                }
+            }
+
+            console.log("All loaded generators and items:", allGenerators);
+            return allGenerators;
+        }
+    
+        async function findGeneratorById(id, allGenerators) {
+            console.log(`Searching for generator or item with ID: ${id}`);
+            
+            // Check if the ID exists directly in allGenerators
+            if (allGenerators[id]) {
+                console.log(`Found generator or item ${id} directly:`, allGenerators[id]);
+                return allGenerators[id];
+                Console.log("Todos los generadores" + allGenerators[id]);
+            }
+
+            console.log(`Item ${id} not found in allGenerators. Performing fresh scan of 'butt' folder...`);
+
+            // Perform a fresh scan of the 'butt' folder
+            const buttFiles = await listJsonFiles('butt');
+            console.log(`Files in 'butt' folder:`, buttFiles);
+
+            for (const file of buttFiles) {
+                console.log(`Checking file: butt/${file}`);
+                try {
+                    const data = await loadJSON(`butt/${file}`);
+                    console.log(`Content of butt/${file}:`, data);
+                    if (data && data.items) {
+                        const foundItem = data.items.find(item => item.itemdefid == id);
+                        if (foundItem) {
+                            console.log(`Found item ${id} in butt/${file}:`, foundItem);
+                            return foundItem;
+                        }
+                    } else {
+                        console.warn(`File butt/${file} does not contain expected data structure`);
+                    }
+                } catch (error) {
+                    console.error(`Error loading or parsing butt/${file}:`, error);
+                }
+            }
+
+            console.error(`Generator or item with ID ${id} not found after fresh scan of 'butt' folder`);
+            throw new Error(`Generator or item with ID ${id} not found`);
+        }
+    
+        function parseBundle(bundleString) {
+            if (!bundleString) {
+                console.error('Empty bundle string');
+                return [];
+            }
+            console.log(`Parsing bundle string: ${bundleString}`);
+            return bundleString.split(';').map(item => {
+                const [id, weight] = item.split('x');
+                const parsedId = parseInt(id);
+                const parsedWeight = parseInt(weight);
+                if (isNaN(parsedId) || isNaN(parsedWeight)) {
+                    console.error(`Invalid bundle item: ${item}`);
+                    return null;
+                }
+                return { id: parsedId, weight: parsedWeight };
+            }).filter(item => item !== null);
+        }
+    
+        async function calculateProbabilities(generatorId, allGenerators, parentProbability = 1) {
+            console.log(`🔄 Calculating probabilities for generator or item ID: ${generatorId}`);
+
+            const generator = await findGeneratorById(generatorId, allGenerators);
+            
+            if (!generator) {
+                console.error(`🚨 Generator or item with ID ${generatorId} not found!`);
+                return {};
+            }
+
+            console.log(`📦 Processing generator:`, generator);
+
+            // 🔴 Handle Empty Bundles (Prevents Crashes)
+            if (!generator.bundle || generator.bundle.trim() === "") {
+                console.warn(`⚠️ Generator ${generatorId} has an EMPTY bundle. Skipping.`);
+                return {};
+            }
+
+            const bundle = parseBundle(generator.bundle);
+            console.log(`🧩 Parsed bundle:`, bundle);
+
+            if (bundle.length === 0) {
+                console.warn(`⚠️ Generator ${generatorId} contains no valid items!`);
+                return {};
+            }
+
+            let probabilities = {};
+            let totalWeight = bundle.reduce((sum, item) => sum + item.weight, 0);
+
+            for (const bundleItem of bundle) {
+                console.log(`➡️ Processing bundle item:`, bundleItem);
+                if (isNaN(bundleItem.id)) {
+                    console.error(`❌ Invalid bundle item ID: ${bundleItem.id}`);
+                    continue;
+                }
+                const itemProbability = (bundleItem.weight / totalWeight) * parentProbability;
+                try {
+                    const subItem = await findGeneratorById(bundleItem.id, allGenerators);
+                    console.log(`✅ Found sub-item:`, subItem);
+
+                    if (subItem.type === "generator") {
+                        // 🔁 RECURSIVELY PROCESS SUB-GENERATOR
+                        const subProbabilities = await calculateProbabilities(bundleItem.id, allGenerators, itemProbability);
+                        probabilities = { ...probabilities, ...subProbabilities };
+                    } else {
+                        probabilities[bundleItem.id] = itemProbability;
+                    }
+                } catch (error) {
+                    console.error(`🔥 Error processing sub-item ${bundleItem.id}:`, error);
+                }
+            }
+
+            console.log(`📊 Final probabilities for ${generatorId}:`, probabilities);
+            return probabilities;
+        }
+
+    
+        function createItemElement(item, probability) {
+            const itemElement = document.createElement('div');
+            itemElement.className = `item ${item.rarity}`;
+
+            // "_uncensored" is added to the URL for the web
+            const uncensoredIconUrl = item.icon_url.replace(/(\.[^.]+)$/, '_uncensored$1');
+
+            // Check if this butt is in the "new" list
+            const isNew = newButtIDs.includes(Number(item.itemdefid));
+
+            itemElement.innerHTML = `
+                <div class="item-image">
+                    <img src="${uncensoredIconUrl}" alt="${item.name}">
+                </div>
+                <h3>${item.name}</h3>
+                <p>Rarity: ${item.rarity}</p>
+                <p>Chance: ${(probability * 100).toFixed(4)}%</p>   
+                ${isNew ? '<p class="new-tag">New</p>' : ''}
+            `;
+
+            const imageElement = itemElement.querySelector('.item-image');
+            imageElement.addEventListener('click', (event) => {
+                const searchQuery = item.name.replace(/ /g, '+');
+                const url = `https://steamcommunity.com/market/search?appid=3231090&q=${searchQuery}`;
+                window.open(url, '_blank');
+                if (!event.ctrlKey && !event.metaKey && event.button !== 1) {
+                    event.preventDefault();
+                }
+            });
+
+            return itemElement;
+        }
+    
+        async function loadCustomMessage() {
+            try {
+                const response = await axios.get('get_custom_message.php');
+                const messageElement = document.querySelector('.custom-message');
+                const content = response.data;
+    
+                const [header, ...bodyParts] = content.split('/n');
+                const body = bodyParts.join('/n');
+    
+                const paragraphs = body.split(/\/n\s*\/n/).map(p => p.trim()).filter(p => p);
+    
+                if (header) {
+                    let htmlContent = `<h3>${header}</h3>`;
+                    htmlContent += paragraphs.map(p => `<p>${p.replace(/\/n/g, ' ')}</p>`).join('');
+                    messageElement.innerHTML = htmlContent;
+                } else {
+                    messageElement.innerHTML = '';
+                }
+            } catch (error) {
+                console.error('Error loading custom message:', error);
+            }
+        }
+    
+        function createTabsAndSections() {
+            const tabsContainer = document.getElementById('crate-tabs');
+            const sectionsContainer = document.getElementById('crate-sections');
+    
+            crateTypes.forEach((crate, index) => {
+                // Create tab
+                const tab = document.createElement('button');
+                tab.className = `tab ${index === 0 ? 'active' : ''}`;
+                tab.textContent = crate.name;
+                tab.onclick = () => switchTab(crate.id);
+                tabsContainer.appendChild(tab);
+    
+                // Create section
+                const section = document.createElement('div');
+                section.id = `crate-section-${crate.id}`;
+                section.className = `crate-section ${index === 0 ? 'active' : ''}`;
+                const gallery = document.createElement('div');
+                gallery.className = 'gallery';
+                section.appendChild(gallery);
+                sectionsContainer.appendChild(section);
+            });
+        }
+    
+        function switchTab(crateId) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.crate-section').forEach(section => section.classList.remove('active'));
+            
+            document.querySelector(`.tab:nth-child(${crateTypes.findIndex(c => c.id === crateId) + 1})`).classList.add('active');
+            document.getElementById(`crate-section-${crateId}`).classList.add('active');
+        }
+    
+        async function loadAndDisplayItems(crateId) {
+            console.log(`⚡ Loading items for crate ${crateId}`);
+            
+            const sectionElement = document.getElementById(`crate-section-${crateId}`);
+            const galleryElement = sectionElement.querySelector('.gallery');
+            galleryElement.innerHTML = ''; // Clear existing items
+
+            try {
+                const allGenerators = await loadAllGenerators();
+                console.log(`✅ All generators loaded for crate ${crateId}:`, allGenerators);
+
+                if (!allGenerators[crateId]) {
+                    throw new Error(`🚨 Generator for crate ID ${crateId} not found!`);
+                }
+
+                console.log(`🔍 Fetching probabilities for ${crateId}...`);
+                const probabilities = await calculateProbabilities(crateId, allGenerators);
+                console.log(`📊 Probabilities for crate ${crateId}:`, probabilities);
+
+                if (Object.keys(probabilities).length === 0) {
+                    throw new Error(`❌ No items found for crate ${crateId}!`);
+                }
+
+                let relevantItems = Object.keys(probabilities).map(itemId => {
+                    const item = allGenerators[itemId];
+
+                    // 🚨 Fix: Skip generators (They have no rarity and are processed separately)
+                    if (!item) {
+                        console.warn(`⚠️ Item with ID ${itemId} not found in allGenerators!`);
+                        return null;
+                    }
+
+                    if (item.type === "generator") {
+                        console.warn(`🛑 Skipping generator ${itemId}, should not be an item!`);
+                        return null; // Ignore generators in the final item list
+                    }
+
+                    if (!item.tags) {
+                        console.warn(`⚠️ Item ${itemId} has no tags, assigning default rarity.`);
+                        item.tags = "rarity:common"; // Default value
+                    }
+
+                    const rarityTag = item.tags.split(';').find(tag => tag.startsWith('rarity:')) || 'rarity:common';
+                    const rarity = rarityTag.split(':')[1];
+
+                    return {
+                        ...item,
+                        rarity: rarity,
+                        probability: probabilities[itemId]
+                    };
+                }).filter(item => item !== null); // 🔥 Remove null values
+
+                console.log(`🎯 Relevant items for crate ${crateId}:`, relevantItems);
+
+                if (relevantItems.length === 0) {
+                    throw new Error(`🚫 No relevant items found for crate ${crateId}. Check JSON files.`);
+                }
+
+                // Sort by rarity
+                const rarityOrder = ['gyatt', 'exquisite', 'rare', 'uncommon', 'common'];
+                relevantItems.sort((a, b) => rarityOrder.indexOf(a.rarity) - rarityOrder.indexOf(b.rarity));
+
+                // Append items to the gallery
+                relevantItems.forEach(item => {
+                    const itemElement = createItemElement(item, item.probability);
+                    galleryElement.appendChild(itemElement);
+                });
+
+                console.log(`✅ Successfully loaded and displayed items for crate ${crateId}`);
+
+            } catch (error) {
+                console.error(`🔥 Error in loadAndDisplayItems(${crateId}):`, error);
+                galleryElement.innerHTML = `<p>Error loading items for ${crateId}. Please try again later.</p>`;
+            }
+        }
+    
+        async function initializeGallery() {
+            createTabsAndSections();
+            await loadCustomMessage();
+            
+            for (const crate of crateTypes) {
+                try {
+                    await loadAndDisplayItems(crate.id);
+                } catch (error) {
+                    console.error(`Failed to load crate ${crate.name}:`, error);
+                    // Continue to the next crate even if this one fails
+                }
+            }
+        }
+    
+        initializeGallery().catch(error => {
+            console.error("Failed to initialize gallery:", error);
+            document.body.innerHTML += "<p>Failed to load the gallery. Please try again later.</p>";
+        });
+    </script>
+</body>
+</html>

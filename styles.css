@@ -1,0 +1,27 @@
+body {
+    background-color: #161616;
+    color: #d5d5d5;
+    margin: 0;
+    padding: 20px;
+}
+header, footer {
+    background-color: #000000;
+    padding: 10px;
+    text-align: center;
+}
+main {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+}
+section {
+    margin-bottom: 20px;
+}
+table {
+    padding: 10px;
+    border-spacing: 20px;
+    font-size: 30px;
+}
+a {
+    color:#ffffff;
+}

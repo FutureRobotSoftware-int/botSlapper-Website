@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 125,
+            "type": "generator",
+            "bundle": "110x1;111x1;112x1",
+            "name": "Common Man Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

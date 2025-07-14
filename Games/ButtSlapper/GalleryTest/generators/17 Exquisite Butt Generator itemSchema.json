@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 17,
+            "type": "generator",
+            "bundle": "23x100;24x100;25x100;42x100;75x100;103x100;104x100;105x100;117x100;136x100",
+            "name": "Exquisite Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

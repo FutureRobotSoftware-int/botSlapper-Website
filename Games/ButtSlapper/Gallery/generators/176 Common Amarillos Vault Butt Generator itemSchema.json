@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 176,
+            "type": "generator",
+            "bundle": "167x100;168x100;169x100;170x100;171x100;172x100;173x100",
+            "name": "Common Amarillos Vault Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

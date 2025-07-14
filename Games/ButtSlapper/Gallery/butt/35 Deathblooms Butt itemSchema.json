@@ -1,0 +1,20 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": "35",
+            "type": "item",
+            "name": "Deathblooms Butt",
+            "description": "",
+            "icon_url": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/DeathbloomsButt.jpg",
+            "item_icon_url_large": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/DeathbloomsButt_Large.jpg",
+            "marketable": true,
+            "tradable": true,
+            "tags": "inventory_type:butt;rarity:rare",
+            "hidden": false,
+            "store_hidden": false,
+            "granted_manually": false,
+            "auto_stack": true
+        }
+    ]
+}

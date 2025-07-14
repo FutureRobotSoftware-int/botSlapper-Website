@@ -1,0 +1,12 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 63,
+            "type": "generator",
+            "bundle": "46x1;56x8;57x8;58x8;59x30;50x30;47x60;48x60;49x60;60x100;61x100;62x100",
+            "name": "Spooky Butt Generator",
+            "granted_manually": false
+        }
+    ]
+}

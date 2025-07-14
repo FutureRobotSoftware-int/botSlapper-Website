@@ -1,0 +1,20 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": "154",
+            "type": "item",
+            "name": "Avoclara Butt",
+            "description": "",
+            "icon_url": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/AvoclaraButt.jpg",
+            "item_icon_url_large": "https://amarillo-arts.net/Games/ButtSlapper/Inventory/AvoclaraButt_Large.jpg",
+            "marketable": true,
+            "tradable": true,
+            "tags": "inventory_type:butt;rarity:gyatt",
+            "hidden": false,
+            "store_hidden": false,
+            "granted_manually": false,
+            "auto_stack": true
+        }
+    ]
+}

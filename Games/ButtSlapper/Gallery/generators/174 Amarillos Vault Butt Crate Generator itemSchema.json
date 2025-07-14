@@ -1,0 +1,13 @@
+{
+    "appid": "3231090",
+    "items": [
+        {
+            "itemdefid": 174,
+            "type": "generator",
+            "bundle": "176x100;177x60;178x30;179x8;180x1",
+            "name": "Amarillos Vault Butt Crate Generator",
+            "exchange": "175",
+            "granted_manually": false
+        }
+    ]
+}
