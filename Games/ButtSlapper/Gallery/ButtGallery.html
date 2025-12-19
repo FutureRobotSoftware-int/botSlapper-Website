@@ -194,7 +194,7 @@
         }
 
         .vault-tag {
-            background-color: #2c5f56; /* púrpura brillante */
+            background-color: #bb2929; /* púrpura brillante */
             padding: 5px 10px;
             border-radius: 5px;
             font-size: 0.8em;
@@ -221,10 +221,10 @@
         const galleryElement = document.getElementById('gallery');
         const crateTypes = [
             { id: 5,   name: "Butt Crate" },
-            { id: 45,  name: "Spooky Butt Crate" },
+            { id: 70,  name: "Holidays Butt Crate"},            
             { id: 174, name: "Unavailable - Amarillos's Vault Butt crate"},
             { id: 124, name: "Unavailable - Man Butt Crate" },
-            { id: 70,  name: "Unavailable - Holidays Butt Crate"},            
+            { id: 45,  name: "Unavailable - Spooky Butt Crate" },
             // FRS: add new idd here
         ];
 
@@ -413,7 +413,7 @@
                 <p>Rarity: ${item.rarity}</p>
                 <p>Chance: ${(probability * 100).toFixed(4)}%</p>   
                 ${isNew ? '<p class="new-tag">New</p>' : ''}
-                ${crateId === 45 ? '<p class="vault-tag">Live Again</p>' : ''}
+                ${crateId === 70 ? '<p class="vault-tag">HO-HO-HO</p>' : ''}
                 
             `;
             //${crateId === x ? '<p class="vault-tag">LIMITED</p>' : ''} => Add these to give an entire vault tag to all items in the vault crate
